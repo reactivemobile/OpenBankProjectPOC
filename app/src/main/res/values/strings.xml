@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">OBP POC</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="enter_your_credentials">Enter Your Credentials</string>
+</resources>
