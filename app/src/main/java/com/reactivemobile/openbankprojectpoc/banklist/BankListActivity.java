@@ -1,8 +1,7 @@
 package com.reactivemobile.openbankprojectpoc.banklist;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.BaseTransientBottomBar;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,21 +12,22 @@ import android.widget.TextView;
 
 import com.reactivemobile.openbankprojectpoc.OpenBankPOCApplication;
 import com.reactivemobile.openbankprojectpoc.R;
+import com.reactivemobile.openbankprojectpoc.bankaccountlist.BankAccountListActivity;
 import com.reactivemobile.openbankprojectpoc.dagger.MainComponent;
 import com.reactivemobile.openbankprojectpoc.rest.Bank;
-import com.reactivemobile.openbankprojectpoc.rest.BankAccounts;
 import com.reactivemobile.openbankprojectpoc.rest.Banks;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_BANK_ID;
+import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_TOKEN;
+
 public class BankListActivity extends AppCompatActivity implements BankListContract.BankListView {
 
     @BindView(R.id.bank_recycler_view)
     RecyclerView bankRecyclerView;
-
-    public static final String INTENT_EXTRA_TOKEN = "INTENT_EXTRA_TOKEN";
 
     private BankListContract.BankListPresenter presenter;
 
@@ -47,22 +47,8 @@ public class BankListActivity extends AppCompatActivity implements BankListContr
     }
 
     @Override
-    public void showBankAccountDetails(BankAccounts bankAccounts) {
-        // TODO Only for debugging for now
-        // TODO -> accounts list -> account details
-
-        String message = String.format("%s accounts for this user at this bank", bankAccounts.accounts.size());
-        Snackbar.make(bankRecyclerView, message, BaseTransientBottomBar.LENGTH_LONG).show();
-    }
-
-    @Override
     public MainComponent getMainComponent() {
         return ((OpenBankPOCApplication) getApplication()).getMainComponent();
-    }
-
-    @Override
-    public String getToken() {
-        return getIntent().getStringExtra(INTENT_EXTRA_TOKEN);
     }
 
     /**
@@ -107,8 +93,15 @@ public class BankListActivity extends AppCompatActivity implements BankListContr
             void setBank(Bank bank) {
                 bankName.setText(bank.full_name);
                 Picasso.with(BankListActivity.this).load(bank.logo).error(R.drawable.ic_error_outline_black_24dp).resize(64, 64).into(bankLogo);
-                itemView.setOnClickListener(v -> presenter.getBankAccountsForBank(bank));
+                itemView.setOnClickListener(v -> showAccountsForBank(bank));
             }
         }
+    }
+
+    private void showAccountsForBank(Bank bank) {
+        Intent intent = new Intent(this, BankAccountListActivity.class);
+        intent.putExtra(INTENT_EXTRA_TOKEN, getIntent().getStringExtra(INTENT_EXTRA_TOKEN));
+        intent.putExtra(INTENT_EXTRA_BANK_ID, bank.id);
+        startActivity(intent);
     }
 }

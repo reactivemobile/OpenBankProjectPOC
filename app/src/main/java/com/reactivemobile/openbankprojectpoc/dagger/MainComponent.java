@@ -1,6 +1,7 @@
 package com.reactivemobile.openbankprojectpoc.dagger;
 
 
+import com.reactivemobile.openbankprojectpoc.bankaccountlist.BankAccountListPresenter;
 import com.reactivemobile.openbankprojectpoc.banklist.BankListPresenter;
 import com.reactivemobile.openbankprojectpoc.login.LoginPresenter;
 
@@ -18,4 +19,6 @@ public interface MainComponent {
     void inject(LoginPresenter loginPresenter);
 
     void inject(BankListPresenter bankListPresenter);
+
+    void inject(BankAccountListPresenter bankAccountListPresenter);
 }

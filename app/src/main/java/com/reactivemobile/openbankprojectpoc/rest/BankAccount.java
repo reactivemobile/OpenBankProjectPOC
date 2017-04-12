@@ -16,12 +16,10 @@ public class BankAccount {
         public String id;
         public String short_name;
         public boolean is_public;
-
-
     }
 
     @Override
     public String toString() {
-        return "Label: " + label + "\n";
+        return "Id: " + id + "\n";
     }
 }
