@@ -1,6 +1,5 @@
 package com.reactivemobile.openbankprojectpoc.bankaccountlist;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.reactivemobile.openbankprojectpoc.OpenBankPOCApplication;
 import com.reactivemobile.openbankprojectpoc.R;
-import com.reactivemobile.openbankprojectpoc.dagger.MainComponent;
+import com.reactivemobile.openbankprojectpoc.base.BaseActivity;
 import com.reactivemobile.openbankprojectpoc.rest.BankAccount;
 import com.reactivemobile.openbankprojectpoc.rest.BankAccounts;
 
@@ -21,7 +19,7 @@ import butterknife.ButterKnife;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_BANK_ID;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_TOKEN;
 
-public class BankAccountListActivity extends Activity implements BankAccountListContract.BankAccountListView {
+public class BankAccountListActivity extends BaseActivity implements BankAccountListContract.BankAccountListView {
 
     @BindView(R.id.account_list_recyclerview)
     RecyclerView accountListRecyclerView;
@@ -45,11 +43,6 @@ public class BankAccountListActivity extends Activity implements BankAccountList
         } else {
             Snackbar.make(accountListRecyclerView, "No accounts found for this user at this bank", Snackbar.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    public MainComponent getMainComponent() {
-        return ((OpenBankPOCApplication) getApplication()).getMainComponent();
     }
 
     @Override

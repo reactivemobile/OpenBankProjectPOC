@@ -34,7 +34,6 @@ public class BankAccountListPresenter implements BankAccountListContract.BankAcc
 
     @Override
     public void getBankAccountsForBank(String bankId) {
-
         Call<BankAccounts> call = restInterface.getPrivateBankAccountsForBank(bankId, tokenHeader);
         call.enqueue(new Callback<BankAccounts>() {
             @Override

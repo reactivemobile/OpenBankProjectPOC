@@ -1,7 +1,7 @@
 package com.reactivemobile.openbankprojectpoc.banklist;
 
 
-import com.reactivemobile.openbankprojectpoc.dagger.MainComponent;
+import com.reactivemobile.openbankprojectpoc.base.BaseInterface;
 import com.reactivemobile.openbankprojectpoc.rest.Banks;
 
 /**
@@ -9,9 +9,8 @@ import com.reactivemobile.openbankprojectpoc.rest.Banks;
  */
 
 public class BankListContract {
-    interface BankListView {
+    interface BankListView extends BaseInterface {
         void showBankList(Banks banks);
-        MainComponent getMainComponent();
     }
 
     interface BankListPresenter {

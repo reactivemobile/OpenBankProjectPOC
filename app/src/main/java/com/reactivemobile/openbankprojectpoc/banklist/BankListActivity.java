@@ -2,7 +2,6 @@ package com.reactivemobile.openbankprojectpoc.banklist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.reactivemobile.openbankprojectpoc.OpenBankPOCApplication;
 import com.reactivemobile.openbankprojectpoc.R;
 import com.reactivemobile.openbankprojectpoc.bankaccountlist.BankAccountListActivity;
-import com.reactivemobile.openbankprojectpoc.dagger.MainComponent;
+import com.reactivemobile.openbankprojectpoc.base.BaseActivity;
 import com.reactivemobile.openbankprojectpoc.rest.Bank;
 import com.reactivemobile.openbankprojectpoc.rest.Banks;
 import com.squareup.picasso.Picasso;
@@ -24,7 +22,7 @@ import butterknife.ButterKnife;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_BANK_ID;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_TOKEN;
 
-public class BankListActivity extends AppCompatActivity implements BankListContract.BankListView {
+public class BankListActivity extends BaseActivity implements BankListContract.BankListView {
 
     @BindView(R.id.bank_recycler_view)
     RecyclerView bankRecyclerView;
@@ -44,11 +42,6 @@ public class BankListActivity extends AppCompatActivity implements BankListContr
     @Override
     public void showBankList(Banks banks) {
         bankRecyclerView.setAdapter(new BankAdapter(banks));
-    }
-
-    @Override
-    public MainComponent getMainComponent() {
-        return ((OpenBankPOCApplication) getApplication()).getMainComponent();
     }
 
     /**
