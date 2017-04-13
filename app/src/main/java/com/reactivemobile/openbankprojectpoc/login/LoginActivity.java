@@ -15,6 +15,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_TOKEN;
+
 public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView {
 
     @BindView(R.id.username)
@@ -56,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     @Override
     public void loginOk(String token) {
         Intent mainActivityIntent = new Intent(this, BankListActivity.class);
-        mainActivityIntent.putExtra(BankListActivity.INTENT_EXTRA_TOKEN, token);
+        mainActivityIntent.putExtra(INTENT_EXTRA_TOKEN, token);
         startActivity(mainActivityIntent);
         finish();
     }
