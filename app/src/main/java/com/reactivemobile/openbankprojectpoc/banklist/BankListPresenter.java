@@ -1,6 +1,7 @@
 package com.reactivemobile.openbankprojectpoc.banklist;
 
 
+import com.reactivemobile.openbankprojectpoc.Model;
 import com.reactivemobile.openbankprojectpoc.rest.Banks;
 import com.reactivemobile.openbankprojectpoc.rest.RestInterface;
 
@@ -22,10 +23,12 @@ public class BankListPresenter implements BankListContract.BankListPresenter {
     @Inject
     RestInterface restInterface;
 
+    @Inject
+    Model model;
+
     BankListPresenter(BankListContract.BankListView bankListView) {
         this.bankListView = bankListView;
         bankListView.getMainComponent().inject(this);
-
     }
 
     @Override
@@ -35,7 +38,8 @@ public class BankListPresenter implements BankListContract.BankListPresenter {
             @Override
             public void onResponse(Call<Banks> call, Response<Banks> response) {
                 if (response.code() == 200) {
-                    bankListView.showBankList(response.body());
+                    model.banks = response.body();
+                    bankListView.showBankList(model.banks);
                 } else {
                     Timber.e("Error getting bank list, code is %d", response.code());
                 }

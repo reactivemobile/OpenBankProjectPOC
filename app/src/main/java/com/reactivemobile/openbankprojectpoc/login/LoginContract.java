@@ -1,6 +1,7 @@
 package com.reactivemobile.openbankprojectpoc.login;
 
 
+import com.reactivemobile.openbankprojectpoc.base.BaseInterface;
 import com.reactivemobile.openbankprojectpoc.dagger.MainComponent;
 
 /**
@@ -8,9 +9,7 @@ import com.reactivemobile.openbankprojectpoc.dagger.MainComponent;
  */
 
 class LoginContract {
-    interface LoginView {
-        void showError(String error);
-
+    interface LoginView extends BaseInterface {
         void loginOk(String token);
 
         MainComponent getMainComponent();

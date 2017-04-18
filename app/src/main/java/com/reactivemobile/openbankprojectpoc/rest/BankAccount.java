@@ -10,6 +10,8 @@ public class BankAccount {
     public String label;
     public String bank_id;
 
+    public Balance balance;
+
     public ArrayList<View> views_available;
 
     public static class View {
@@ -18,8 +20,13 @@ public class BankAccount {
         public boolean is_public;
     }
 
+    public static class Balance {
+        public String currency;
+        public String amount;
+    }
+
     @Override
     public String toString() {
-        return "Id: " + id + "\n";
+        return "Id: " + id + "\n" + " Balance: " + (balance != null ? balance.currency + balance.amount : "not available");
     }
 }
