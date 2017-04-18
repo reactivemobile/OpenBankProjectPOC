@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".banklist.BankListActivity" />
         <activity android:name=".bankaccountlist.BankAccountListActivity" />
+        <activity android:name=".bankaccountdetails.BankAccountDetailsActivity" />
 
         <activity android:name=".login.LoginActivity">
             <intent-filter>

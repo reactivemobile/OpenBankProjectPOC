@@ -8,5 +8,6 @@ public class Constants {
 
     public static final String INTENT_EXTRA_TOKEN = "INTENT_EXTRA_TOKEN";
     public static final String INTENT_EXTRA_BANK_ID = "INTENT_EXTRA_BANK_ID";
+    public static final String INTENT_EXTRA_BANK_ACCOUNT_ID = "INTENT_EXTRA_BANK_ACCOUNT_ID";
 
 }

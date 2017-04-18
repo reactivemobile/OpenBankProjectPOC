@@ -1,5 +1,6 @@
 package com.reactivemobile.openbankprojectpoc.bankaccountlist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.reactivemobile.openbankprojectpoc.R;
+import com.reactivemobile.openbankprojectpoc.bankaccountdetails.BankAccountDetailsActivity;
 import com.reactivemobile.openbankprojectpoc.base.BaseActivity;
 import com.reactivemobile.openbankprojectpoc.rest.BankAccount;
 import com.reactivemobile.openbankprojectpoc.rest.BankAccounts;
@@ -16,6 +18,7 @@ import com.reactivemobile.openbankprojectpoc.rest.BankAccounts;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_BANK_ACCOUNT_ID;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_BANK_ID;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_TOKEN;
 
@@ -25,6 +28,7 @@ public class BankAccountListActivity extends BaseActivity implements BankAccount
     RecyclerView accountListRecyclerView;
 
     BankAccountListContract.BankAccountListPresenter presenter;
+    private String bankId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,8 @@ public class BankAccountListActivity extends BaseActivity implements BankAccount
         ButterKnife.bind(this);
 
         presenter = new BankAccountListPresenter(this);
-        presenter.getBankAccountsForBank(getIntent().getStringExtra(INTENT_EXTRA_BANK_ID));
+        bankId = getIntent().getStringExtra(INTENT_EXTRA_BANK_ID);
+        presenter.getBankAccountsForBank(bankId);
     }
 
     @Override
@@ -74,15 +79,22 @@ public class BankAccountListActivity extends BaseActivity implements BankAccount
         }
 
         class BankAccountViewHolder extends RecyclerView.ViewHolder {
-
             BankAccountViewHolder(View itemView) {
                 super(itemView);
             }
 
             void setBankAccount(BankAccount bankAccount) {
                 ((TextView) itemView).setText(bankAccount.id);
+                itemView.setOnClickListener(v -> showAccountDetailsForAccount(bankAccount.id));
             }
         }
     }
 
+    private void showAccountDetailsForAccount(String id) {
+        Intent intent = new Intent(this, BankAccountDetailsActivity.class);
+        intent.putExtra(INTENT_EXTRA_TOKEN, getIntent().getStringExtra(INTENT_EXTRA_TOKEN));
+        intent.putExtra(INTENT_EXTRA_BANK_ID, bankId);
+        intent.putExtra(INTENT_EXTRA_BANK_ACCOUNT_ID, id);
+        startActivity(intent);
+    }
 }
