@@ -1,6 +1,6 @@
 package com.reactivemobile.openbankprojectpoc.bankaccountdetails;
 
-import com.reactivemobile.openbankprojectpoc.base.BaseInterface;
+import com.reactivemobile.openbankprojectpoc.base.AuthenticatedInterface;
 import com.reactivemobile.openbankprojectpoc.rest.BankAccount;
 
 /**
@@ -9,7 +9,7 @@ import com.reactivemobile.openbankprojectpoc.rest.BankAccount;
 
 public class BankAccountDetailsContract {
 
-    interface BankAccountDetailsView extends BaseInterface {
+    interface BankAccountDetailsView extends AuthenticatedInterface {
         void showBankAccountDetails(BankAccount bankAccount);
 
         String getToken();

@@ -18,7 +18,6 @@ import retrofit2.Response;
 
 public class LoginPresenter implements LoginContract.LoginPresenter {
 
-
     private static final String AUTH_HEADER = "DirectLogin username=\"%s\",  password=\"%s\",  consumer_key=\"%s\"";
 
     private LoginContract.LoginView loginView;

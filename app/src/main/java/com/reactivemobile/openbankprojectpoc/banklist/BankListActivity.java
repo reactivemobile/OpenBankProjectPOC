@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.reactivemobile.openbankprojectpoc.R;
 import com.reactivemobile.openbankprojectpoc.bankaccountlist.BankAccountListActivity;
-import com.reactivemobile.openbankprojectpoc.base.BaseActivity;
+import com.reactivemobile.openbankprojectpoc.base.AuthenticatedActivity;
 import com.reactivemobile.openbankprojectpoc.rest.Bank;
 import com.reactivemobile.openbankprojectpoc.rest.Banks;
 import com.squareup.picasso.Picasso;
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_BANK_ID;
 import static com.reactivemobile.openbankprojectpoc.Constants.INTENT_EXTRA_TOKEN;
 
-public class BankListActivity extends BaseActivity implements BankListContract.BankListView {
+public class BankListActivity extends AuthenticatedActivity implements BankListContract.BankListView {
 
     @BindView(R.id.bank_recycler_view)
     RecyclerView bankRecyclerView;
@@ -93,7 +93,7 @@ public class BankListActivity extends BaseActivity implements BankListContract.B
 
     private void showAccountsForBank(Bank bank) {
         Intent intent = new Intent(this, BankAccountListActivity.class);
-        intent.putExtra(INTENT_EXTRA_TOKEN, getIntent().getStringExtra(INTENT_EXTRA_TOKEN));
+        intent.putExtra(INTENT_EXTRA_TOKEN, getToken());
         intent.putExtra(INTENT_EXTRA_BANK_ID, bank.id);
         startActivity(intent);
     }

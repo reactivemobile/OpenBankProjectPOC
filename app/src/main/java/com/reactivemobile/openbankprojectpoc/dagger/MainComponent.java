@@ -14,7 +14,7 @@ import dagger.Component;
  * Created by donalocallaghan on 11/04/2017.
  */
 @Singleton
-@Component(modules = {RestModule.class})
+@Component(modules = {RestModule.class, ModelModule.class})
 public interface MainComponent {
 
     void inject(LoginPresenter loginPresenter);
