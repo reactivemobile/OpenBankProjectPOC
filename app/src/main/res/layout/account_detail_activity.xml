@@ -27,4 +27,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffcccccc"
+        android:padding="@dimen/activity_margin">
+
+        <TextView
+            android:id="@+id/transfer_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:padding="@dimen/activity_margin"
+            android:text="Transfer" />
+
+        <TextView
+            android:id="@+id/transfer_currency_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/transfer_title"
+            android:padding="@dimen/activity_margin" />
+
+        <EditText
+            android:id="@+id/transfer_amount_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/transfer_currency_text_view"
+            android:layout_toRightOf="@id/transfer_currency_text_view"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/activity_margin" />
+
+        <TextView
+            android:id="@+id/transfer_currency_text_view_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/transfer_amount_edit_text"
+            android:padding="@dimen/activity_margin"
+            android:text="To account" />
+
+        <Spinner
+            android:id="@+id/transfer_to_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/transfer_currency_text_view_to"
+            android:layout_toRightOf="@id/transfer_currency_text_view_to"
+            android:padding="@dimen/activity_margin" />
+
+
+        <Button
+            android:id="@+id/transfer_go_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/transfer_to_spinner"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/activity_margin"
+            android:text="Go" />
+
+    </RelativeLayout>
+
 </LinearLayout>

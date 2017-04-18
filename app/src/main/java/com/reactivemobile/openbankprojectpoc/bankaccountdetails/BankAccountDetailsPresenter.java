@@ -1,5 +1,6 @@
 package com.reactivemobile.openbankprojectpoc.bankaccountdetails;
 
+import com.reactivemobile.openbankprojectpoc.Model;
 import com.reactivemobile.openbankprojectpoc.rest.BankAccount;
 import com.reactivemobile.openbankprojectpoc.rest.RestInterface;
 
@@ -26,6 +27,9 @@ public class BankAccountDetailsPresenter implements BankAccountDetailsContract.B
     @Inject
     RestInterface restInterface;
 
+    @Inject
+    Model model;
+
     public BankAccountDetailsPresenter(BankAccountDetailsContract.BankAccountDetailsView bankAccountDetailsView) {
         this.bankAccountDetailsView = bankAccountDetailsView;
         bankAccountDetailsView.getMainComponent().inject(this);
@@ -41,6 +45,7 @@ public class BankAccountDetailsPresenter implements BankAccountDetailsContract.B
                 Timber.d("Got response " + response.code());
                 if (response.code() == 200) {
                     bankAccountDetailsView.showBankAccountDetails(response.body());
+                    bankAccountDetailsView.showTransferList(response.body().balance.currency, model.bankAccounts.get(bankId));
                 }
             }
 

@@ -27,6 +27,6 @@ public class BankAccount {
 
     @Override
     public String toString() {
-        return "Id: " + id + "\n" + " Balance: " + (balance != null ? balance.currency + balance.amount : "not available");
+        return id;
     }
 }
