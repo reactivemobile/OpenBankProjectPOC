@@ -1,5 +1,6 @@
 package com.reactivemobile.openbankprojectpoc.dagger;
 
+import com.reactivemobile.openbankprojectpoc.BuildConfig;
 import com.reactivemobile.openbankprojectpoc.rest.RestInterface;
 
 import javax.inject.Singleton;
@@ -26,7 +27,7 @@ public class RestModule {
 
         Retrofit retrofit = new Retrofit.Builder().
                 client(client).
-                baseUrl("https://psd2-api.openbankproject.com").
+                baseUrl(BuildConfig.BASE_URL).
                 addConverterFactory(GsonConverterFactory.create()).
                 build();
 

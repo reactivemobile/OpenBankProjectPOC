@@ -4,6 +4,8 @@ import com.reactivemobile.openbankprojectpoc.Model;
 import com.reactivemobile.openbankprojectpoc.rest.BankAccount;
 import com.reactivemobile.openbankprojectpoc.rest.RestInterface;
 
+import java.math.BigDecimal;
+
 import javax.inject.Inject;
 
 import retrofit2.Call;
@@ -54,5 +56,10 @@ public class BankAccountDetailsPresenter implements BankAccountDetailsContract.B
                 Timber.e(throwable);
             }
         });
+    }
+
+    @Override
+    public void makeTransfer(String toAccountId, String currency, BigDecimal amount) {
+
     }
 }

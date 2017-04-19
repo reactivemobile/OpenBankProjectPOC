@@ -12,6 +12,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "CONSUMER_KEY", getProperty('oauth.properties','consumer_key')
+        buildConfigField "String", "BASE_URL", "\"https://apisandbox.openbankproject.com\""
     }
     buildTypes {
         release {

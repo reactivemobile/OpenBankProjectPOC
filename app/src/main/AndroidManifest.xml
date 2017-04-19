@@ -11,11 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".banklist.BankListActivity" />
-        <activity android:name=".bankaccountlist.BankAccountListActivity" />
-        <activity android:name=".bankaccountdetails.BankAccountDetailsActivity" />
+        <activity
+            android:name=".banklist.BankListActivity"
+            android:label="Bank List" />
+        <activity
+            android:name=".bankaccountlist.BankAccountListActivity"
+            android:label="Account List" />
+        <activity
+            android:name=".bankaccountdetails.BankAccountDetailsActivity"
+            android:label="Account Details" />
 
-        <activity android:name=".login.LoginActivity">
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
