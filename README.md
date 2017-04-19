@@ -1,7 +1,7 @@
 # OpenBankProjectPOC for Android
 This is a proof of concept application for logging into and interacting with banks and accounts from the Open Bank Project PSD2 Sandbox.
 
-To test the application you first need to visit the [Open Bank Project PSD2 website](https://psd2-api.openbankproject.com/). Here you can register yourself and get an API key.
+To test the application you first need to visit the [Open Bank Project PSD2 website](https://apisandbox.openbankproject.com/index). Here you can register yourself and get an API key.
 
 Now create some accounts on the OBP PSD2 webpage, associated with whichever banks you choose.
 
